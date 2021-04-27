@@ -7,7 +7,7 @@
     "start": "cross-env NODE_ENV=production node ./build/server.js",
     "build": "cross-env NODE_ENV=production tsc",
     "dev": "cross-env NODE_ENV=development ts-node-dev --respawn --transpile-only src/server.ts",
-    "eslint": "cross-env eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "cross-env eslint . --ext .js,.jsx,.ts,.tsx",
     "fmt": "cross-env eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "test": "cross-env NODE_ENV=testing jest",
     "clean": "rm -rf ./build"
