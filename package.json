@@ -1,4 +1,11 @@
 {
+  "name": "parking",
+  "version": "0.0.1",
+  "description": "A simple app for parking management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
@@ -26,5 +33,16 @@
     "supertest": "^6.1.3",
     "ts-jest": "^26.5.5",
     "ts-node-dev": "^1.1.6"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Novanet-Studio/parking.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Novanet-Studio/parking/issues"
+  },
+  "homepage": "https://github.com/Novanet-Studio/parking#readme"
 }
