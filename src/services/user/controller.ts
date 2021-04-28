@@ -1,4 +1,4 @@
-import User from '../models/user.model';
+import User from './model';
 import type { Request, Response } from 'express';
 
 export const get = async (_: Request, res: Response): Promise<void> => {
