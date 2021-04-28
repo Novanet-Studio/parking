@@ -10,7 +10,7 @@
     "lint": "cross-env eslint . --ext .js,.jsx,.ts,.tsx",
     "fmt": "cross-env eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "test": "cross-env NODE_ENV=testing jest",
-    "clean": "rm -rf ./build"
+    "clean": "rimraf ./build"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
