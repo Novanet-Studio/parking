@@ -2,7 +2,12 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 
-import type { Express, Request, Response } from 'express';
+import readEnv from './config/env';
+import userRouter from './routes/user.router';
+
+import type { Express } from 'express';
+
+readEnv();
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
@@ -16,6 +21,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/v1', (req: Request, res: Response) => res.json({ message: 'Allow Permit Parking' }));
+// Routes
+app.use('/v1/users', userRouter);
 
 export default app;
