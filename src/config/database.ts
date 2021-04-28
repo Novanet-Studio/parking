@@ -2,7 +2,7 @@ import { connect } from 'mongoose';
 
 const mongoUri = process.env.MONGO_URI;
 
-export default async function () {
+export default async function (): Promise<void> {
   try {
     await connect(mongoUri, {
       useNewUrlParser: true,
