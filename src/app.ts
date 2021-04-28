@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 
 import readEnv from './config/env';
-import userRouter from './routes/user.router';
+import { user as userService } from './services';
 
 import type { Express } from 'express';
 
@@ -22,6 +22,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Routes
-app.use('/v1/users', userRouter);
+app.use('/v1/users', userService);
 
 export default app;
