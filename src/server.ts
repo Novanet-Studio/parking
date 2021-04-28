@@ -1,7 +1,7 @@
 import app from './app';
 import database from './config/database';
 
-const domain: string = 'localhost';
+const domain = 'localhost';
 
 database().catch(console.error);
 
