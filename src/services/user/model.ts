@@ -3,6 +3,7 @@ import type { Document, Model } from 'mongoose';
 
 export interface UserDocument extends Document {
   name: string;
+  lastname: string;
   email: string;
   password: string;
   apartment: number;
@@ -14,7 +15,8 @@ export interface UserDocument extends Document {
 }
 
 const userSchema: Schema<UserDocument> = new Schema({
-  fullname: String,
+  name: String,
+  lastname: String,
   email: {
     type: String,
     required: true,
@@ -26,7 +28,7 @@ const userSchema: Schema<UserDocument> = new Schema({
   },
   apartment: Number,
   seatsAllowed: Number,
-  reserverdSeats: Number,
+  reservedSeats: Number,
   visitorBoothAssignment: Number,
 });
 
