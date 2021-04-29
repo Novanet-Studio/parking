@@ -45,3 +45,21 @@ export const update = async (req: Request, res: Response): Promise<Response> => 
     return server.internalServerError(`Was an error updating user: ${error.message}`);
   }
 };
+
+export const remove = async (req: Request, res: Response): Promise<Response> => {
+  const server = new ServerResponse(res);
+  const id = req.params.id;
+
+  try {
+    const userDeleted = await User.findOneAndDelete({ _id: id });
+
+    if (!userDeleted) {
+      return server.notFound(`User with id "${req.params.id}" not found`);
+    }
+
+    return res.json(userDeleted);
+  } catch (error) {
+    return server.internalServerError(`Was an error while removing user: ${error.message}`);
+  }
+};
+
