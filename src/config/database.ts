@@ -5,6 +5,7 @@ const mongoUri = process.env.MONGO_URI;
 export default async function (): Promise<void> {
   try {
     await connect(mongoUri, {
+      useCreateIndex: true,
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
