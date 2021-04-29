@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 
 import readEnv from './config/env';
+import { createRoles } from './config/bootstrap';
 import { user as userService } from './services';
 
 import type { Express } from 'express';
@@ -11,6 +12,8 @@ readEnv();
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
+
+createRoles();
 
 // Settings
 app.set('port', port);
