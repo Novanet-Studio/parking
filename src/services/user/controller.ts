@@ -30,3 +30,18 @@ export const add = async (req: Request, res: Response): Promise<Response> => {
     return server.internalServerError(`Was an error creating user: ${error.message}`);
   }
 };
+
+export const update = async (req: Request, res: Response): Promise<Response> => {
+  const server = new ServerResponse(res);
+  try {
+    const userUpdated = await User.findOneAndUpdate({ _id: req.params.id }, { ...req.body });
+
+    if (!userUpdated) {
+      return server.notFound(`User with id: ${req.params.id} doesn't exists`);
+    }
+    
+    return res.json('Update');
+  } catch (error) {
+    return server.internalServerError(`Was an error updating user: ${error.message}`);
+  }
+};
