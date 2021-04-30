@@ -5,6 +5,7 @@ import cors from 'cors';
 import readEnv from './config/env';
 import { createRoles } from './config/bootstrap';
 import { user as userService } from './services';
+import { auth as authService } from './services/auth';
 
 import type { Express } from 'express';
 
@@ -26,5 +27,6 @@ app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.use('/v1/users', userService);
+app.use('/v1/auth', authService);
 
 export default app;

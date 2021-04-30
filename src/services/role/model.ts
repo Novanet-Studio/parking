@@ -2,6 +2,7 @@ import { model, Schema } from 'mongoose';
 import type { Document, Model } from 'mongoose';
 
 export interface RoleDocument extends Document {
+  _id: string;
   name: string;
 }
 

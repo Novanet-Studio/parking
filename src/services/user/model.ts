@@ -7,10 +7,11 @@ export interface UserDocument extends Document {
   lastname: string;
   email: string;
   password: string;
-  apartmentNumber: number;
-  seatsAllowed: number;
-  reservedSeats: number;
-  visitorBoothAssignment: number;
+  roles: string[];
+  // apartmentNumber: number;
+  // seatsAllowed: number;
+  // reservedSeats: number;
+  // visitorBoothAssignment: number;
   encryptPassword(password: string): string;
   comparePassword(password: string): boolean;
 }
