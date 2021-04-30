@@ -34,6 +34,10 @@ class ServerResponse {
       message || 'Unauthorized',
     );
   }
+
+  public forbidden(message?: string): Response {
+    return ServerResponse.messageReply(this.res, 403, message || 'Forbidden' );
+  }
 }
 
 export default ServerResponse;
