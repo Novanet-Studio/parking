@@ -13,7 +13,7 @@ export interface UserDocument extends Document {
   // reservedSeats: number;
   // visitorBoothAssignment: number;
   encryptPassword(password: string): string;
-  comparePassword(password: string): boolean;
+  comparePassword(password: string, receivedPassword: string): boolean;
 }
 
 const userSchema: Schema<UserDocument> = new Schema({

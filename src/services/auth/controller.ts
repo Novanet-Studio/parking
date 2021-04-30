@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import Role from '../role/model';
 import User from '../user/model';
+import ServerResponse from '../../common/serverResponse';
 import type { Request, Response } from 'express';
 import type { RoleDocument } from '../role/model';
 
@@ -40,6 +41,25 @@ export const signup = async (
 
   const token = jwt.sign({ id: savedUser._id }, process.env.JWT_TOKEN, {
     expiresIn: 86400, // 24 hours
+  });
+
+  return res.json({ token });
+};
+
+export const signin = async (req: Request, res: Response): Promise<Response> => {
+  const server = new ServerResponse(res);
+  const userFound = await User.findOne({ email: req.body.email }).populate('roles');
+
+  if (!userFound) return server.notFound(`User with email "${req.body.email}" not found`);
+
+  console.log(userFound);
+
+  const matchPassword = await userFound.comparePassword(req.body.password, userFound.password); 
+
+  if (!matchPassword) return server.unauthorized(`Invalid password`);
+  
+  const token = jwt.sign({ id: userFound._id}, process.env.JWT_TOKEN, {
+    expiresIn: 86400,
   });
 
   return res.json({ token });
