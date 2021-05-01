@@ -17,7 +17,7 @@ export const add = async (req: Request, res: Response): Promise<Response> => {
   const exists = await User.findOne({ email: req.body.email });
 
   if (exists) {
-    server.notFound(`User ${req.body.email} already exists`);
+    return server.badRequest(`User ${req.body.email} already exists`);
   }
 
   try {
