@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import ServerResponse from '../common/serverResponse';
-import Role from '../services/role/model';
+import Role, { RoleDocument, ROLES } from '../services/role/model';
 import User from '../services/user/model';
 
 export const isModerator = async (
@@ -39,4 +39,17 @@ export const isAdmin = async (
   });
 
   return server.forbidden('Require "admin" role');
+};
+
+export const checkRolesExisted = (req: Request, res: Response, next: NextFunction): void => {
+  const server = new ServerResponse(res);
+  if (req.body.roles) {
+    req.body.roles.forEach((role: RoleDocument) => {
+      if (!ROLES.includes(req.body.roles)) {
+        return server.badRequest(`Role ${role} doesn't exists`);
+      }
+    });
+  }
+
+  next();
 };
