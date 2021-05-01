@@ -6,6 +6,8 @@ export interface RoleDocument extends Document {
   name: string;
 }
 
+export const ROLES = ['admin', 'moderator', 'user'];
+
 const roleSchema: Schema<RoleDocument> = new Schema(
   {
     name: String,
