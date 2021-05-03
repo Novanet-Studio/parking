@@ -14,7 +14,7 @@ export default async function (
 
     if (!token) return server.forbidden('No token provided');
 
-    const decoded = jwt.verify(token, process.env.JWT_TOKEN) as { id: string };
+    const decoded = jwt.verify(token, process.env.JWT_SECRET) as { id: string };
     req.userId = decoded.id;
 
     const user = await User.findById(req.userId, { password: 0 });

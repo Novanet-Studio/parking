@@ -39,7 +39,7 @@ export const signup = async (
   const savedUser = await newUser.save();
   console.log(savedUser);
 
-  const token = jwt.sign({ id: savedUser._id }, process.env.JWT_TOKEN, {
+  const token = jwt.sign({ id: savedUser._id }, process.env.JWT_SECRET, {
     expiresIn: 86400, // 24 hours
   });
 
@@ -58,7 +58,7 @@ export const signin = async (req: Request, res: Response): Promise<Response> => 
 
   if (!matchPassword) return server.unauthorized(`Invalid password`);
   
-  const token = jwt.sign({ id: userFound._id}, process.env.JWT_TOKEN, {
+  const token = jwt.sign({ id: userFound._id}, process.env.JWT_SECRET, {
     expiresIn: 86400,
   });
 
